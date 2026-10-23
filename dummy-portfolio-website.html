@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Carter | Portfolio</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --surface: #1e293b;
+        --accent: #38bdf8;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --radius: 12px;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: Inter, system-ui, -apple-system, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #1e293b;
+      }
+      .logo { font-weight: 700; font-size: 1.25rem; color: var(--accent); }
+      nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin-left: 1.5rem;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+      nav a:hover { color: var(--accent); }
+      section { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
+      .hero { text-align: center; padding-top: 7rem; }
+      .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; }
+      .hero h1 span { color: var(--accent); }
+      .hero p { color: var(--muted); max-width: 600px; margin: 1.25rem auto 2rem; font-size: 1.1rem; }
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.75rem;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .btn-primary { background: var(--accent); color: #0f172a; }
+      .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(56, 189, 248, 0.35); }
+      .btn-outline { border: 1px solid var(--muted); color: var(--text); margin-left: 0.75rem; }
+      .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+      h2 { font-size: 2rem; margin-bottom: 2rem; }
+      h2::after {
+        content: "";
+        display: block;
+        width: 56px;
+        height: 3px;
+        background: var(--accent);
+        margin-top: 0.5rem;
+        border-radius: 2px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid #334155;
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        transition: transform 0.2s, border-color 0.2s;
+      }
+      .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+      .card h3 { margin-bottom: 0.5rem; font-size: 1.15rem; }
+      .card p { color: var(--muted); font-size: 0.95rem; }
+      .tags { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(56, 189, 248, 0.12);
+        color: var(--accent);
+      }
+      .skills li {
+        list-style: none;
+        margin-bottom: 0.75rem;
+        color: var(--muted);
+      }
+      .bar { height: 6px; background: #334155; border-radius: 3px; overflow: hidden; margin-top: 0.3rem; }
+      .bar > i { display: block; height: 100%; background: var(--accent); border-radius: 3px; }
+      .contact-form {
+        display: grid;
+        gap: 1rem;
+        max-width: 520px;
+      }
+      input, textarea {
+        background: var(--surface);
+        border: 1px solid #334155;
+        border-radius: var(--radius);
+        padding: 0.85rem 1rem;
+        color: var(--text);
+        font-family: inherit;
+        font-size: 0.95rem;
+      }
+      input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+      button {
+        background: var(--accent);
+        color: #0f172a;
+        font-weight: 700;
+        border: none;
+        border-radius: 999px;
+        padding: 0.85rem 1.5rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      button:hover { transform: translateY(-2px); }
+      footer {
+        text-align: center;
+        padding: 2.5rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+        border-top: 1px solid #1e293b;
+      }
+      #toast {
+        display: none;
+        margin-top: 1rem;
+        color: var(--accent);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">alex.carter</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Hi, I'm Alex <span>Carter</span></h1>
+      <p>A full-stack developer crafting clean, fast, and delightful web experiences. Currently building things with React, Node.js, and a lot of coffee.</p>
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    </section>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>
+          I'm a fictional demo developer with 5+ years of experience turning ideas into production-ready
+          applications. I care deeply about performance, accessibility, and pixel-perfect design. This is a
+          dummy portfolio — every name, project, and statistic here is placeholder content ready to be swapped
+          out for the real thing.
+        </p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>TaskFlow</h3>
+          <p>A collaborative task manager with real-time updates, drag-and-drop boards, and team analytics.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">WebSocket</span><span class="tag">Node.js</span></div>
+        </div>
+        <div class="card">
+          <h3>ShopLite</h3>
+          <p>A lightweight e-commerce storefront with cart, checkout, and an admin dashboard.</p>
+          <div class="tags"><span class="tag">Next.js</span><span class="tag">Stripe</span><span class="tag">PostgreSQL</span></div>
+        </div>
+        <div class="card">
+          <h3>DevMetrics</h3>
+          <p>A dashboard that visualizes GitHub activity, PR velocity, and code review stats.</p>
+          <div class="tags"><span class="tag">D3.js</span><span class="tag">REST API</span><span class="tag">Chart.js</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li>JavaScript / TypeScript<div class="bar"><i style="width: 90%"></i></div></li>
+        <li>React &amp; Next.js<div class="bar"><i style="width: 85%"></i></div></li>
+        <li>Node.js &amp; Express<div class="bar"><i style="width: 80%"></i></div></li>
+        <li>SQL &amp; Databases<div class="bar"><i style="width: 70%"></i></div></li>
+        <li>UI / UX Design<div class="bar"><i style="width: 65%"></i></div></li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form class="contact-form" onsubmit="event.preventDefault(); document.getElementById('toast').style.display='block'; this.reset();">
+        <input type="text" placeholder="Your name" required />
+        <input type="email" placeholder="Your email" required />
+        <textarea rows="5" placeholder="Your message" required></textarea>
+        <button type="submit">Send Message</button>
+        <span id="toast">Thanks! This is a demo form — nothing was actually sent.</span>
+      </form>
+    </section>
+
+    <footer>© 2026 Alex Carter (dummy). Built as a portfolio template.</footer>
+  </body>
+</html>
